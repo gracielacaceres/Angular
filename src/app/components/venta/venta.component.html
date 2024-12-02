@@ -1,0 +1,67 @@
+<div class="container">
+  <!-- Formulario de Venta -->
+  <section class="venta">
+    <h2>Venta</h2>
+    <form (ngSubmit)="registrarVenta()">
+      <label for="idUsuario">Seleccione un Usuario:</label>
+      <select [(ngModel)]="idUsuario" name="idUsuario" required>
+        <option *ngFor="let usuario of usuarios" [value]="usuario.idUsuario">
+          {{ usuario.nombre }} {{ usuario.apellido }}
+        </option>
+      </select>
+
+      <!-- Campos para agregar productos al detalle -->
+      <label for="idProducto">Seleccione un Producto:</label>
+      <select [(ngModel)]="idProducto" (change)="onProductoChange($event)" name="idProducto" required>
+        <option *ngFor="let producto of productos" [value]="producto.idProducto">
+          {{ producto.nombre }} ({{ producto.precio | currency }})
+        </option>
+      </select>
+      
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" [(ngModel)]="cantidad" name="cantidad" required>
+
+      <label for="precioUnitario">Precio Unitario:</label>
+      <input type="number" [(ngModel)]="precioUnitario" name="precioUnitario" required>
+
+      <!-- Botón para agregar el producto al detalle -->
+      <button type="button" (click)="agregarDetalle()">Agregar Producto</button>
+      <!-- Botón para registrar la venta completa -->
+      <button type="submit">Registrar Venta</button>
+    </form>
+  </section>
+
+  <!-- Tabla de Detalle de Venta -->
+  <section class="detalle-venta">
+    <h2>Detalle de Venta</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detalle of detalles; let i = index">
+          <td>{{ detalle.producto.nombre }}</td>
+          <td>{{ detalle.cantidad }}</td>
+          <td>{{ detalle.precioUnitario | currency }}</td>
+          <td>{{ (detalle.cantidad * detalle.precioUnitario) | currency }}</td>
+          <td>
+            <button (click)="eliminarDetalle(i)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total">
+      <p><strong>Total a Pagar:</strong> {{ totalPago | currency }}</p>
+    </div>
+    
+  </section>
+</div>
+
+

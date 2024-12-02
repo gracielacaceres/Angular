@@ -1,0 +1,65 @@
+mat-dialog-content {
+  max-height: 400px; /* Ajusta según lo que necesites */
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mat-checkbox {
+  margin-bottom: 16px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+button[mat-button] {
+  margin-left: 8px;
+}
+
+@media (max-width: 600px) {
+  mat-dialog-content {
+    padding: 8px;
+  }
+
+  mat-dialog-actions {
+    justify-content: center;
+  }
+}
+.modal-dialog {
+  max-width: 400px; /* Ancho máximo del modal */
+  margin: 1.75rem auto; /* Centrar el modal */
+}
+
+.modal-body {
+  max-height: 60vh; /* Altura máxima del cuerpo del modal */
+  overflow-y: auto; /* Habilitar scroll vertical */
+}
+mat-dialog-content {
+  max-height: 400px; /* Altura máxima del contenido */
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mat-checkbox {
+  margin-bottom: 16px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+button[mat-button] {
+  margin-left: 8px;
+}

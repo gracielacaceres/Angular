@@ -1,0 +1,128 @@
+.header-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.button-dashboard {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-citas {
+  background-color: #007bff; /* Color del botón */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-citas:hover {
+  background-color: #0056b3; /* Color al pasar el mouse */
+  background-color: linear-gradient(to right, #2a012b, #070239b4);
+}
+
+.citas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center;
+}
+
+.cita-card {
+  background-color: #f9f9f9; /* Fondo de la tarjeta */
+  border: 1px solid #ddd; /* Borde de la tarjeta */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 300px; /* Ancho de la tarjeta */
+  transition: transform 0.2s; /* Transición suave */
+}
+
+.cita-card:hover {
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centrar los botones */
+  margin-top: 15px; /* Espacio superior */
+}
+
+.cancel-button {
+  background-color: #ff4d4d; /* Color de fondo del botón de cancelar */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  cursor: pointer; /* Cambiar cursor a mano */
+  transition: background-color 0.3s; /* Transición de color */
+}
+
+.cancel-button:hover {
+  background-color: #e60000; /* Color al pasar el mouse */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}

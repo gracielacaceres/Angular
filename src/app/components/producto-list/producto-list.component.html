@@ -1,0 +1,113 @@
+<div class="container">
+  <h2>Productos</h2>
+  <!-- Botones para filtrar productos activos, inactivos y todos -->
+<div class="mb-3">
+  <button mat-raised-button color="primary" (click)="filtrarProductos('activos')">
+    Activos
+  </button>
+  <button mat-raised-button color="warn" (click)="filtrarProductos('inactivos')">
+    Inactivos
+  </button>
+  <button mat-raised-button (click)="filtrarProductos('todos')">
+    Todos
+  </button>
+  <button mat-raised-button routerLink="/productos/nuevo">Agregar Producto</button>
+
+</div>
+
+  <div class="button-dashboard">
+    <button class="button-citas" routerLink="/dashboard">Regresar Dashboard</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+
+        <th>Imagen</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Unidad de Medida</th>
+        <th>Fecha de Ingreso</th>
+        <th>Fecha Expiración</th>
+        <th>Categoría</th>
+        <th>Id Categoría</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.idProducto }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+       
+        <td>
+          <img [src]="producto.imagen" alt="{{ producto.nombre }}" class="producto-imagen">
+        </td>
+        <td>{{ producto.precio | currency }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.unidadMedida }}</td>
+        <td>{{ producto.fechaIngreso | date }}</td>
+        <td>{{ producto.fechaExpiracion | date }}</td>
+        <td>{{ producto.categoria.nombre }}</td>
+        <td>{{ producto.categoria.idCategoria }}</td>
+        <td>{{ producto.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <button *ngIf="producto.estado === 1" class="btn btn-danger" (click)="eliminarProducto(producto.idProducto)">Eliminar</button>
+          <button *ngIf="producto.estado === 0" class="btn btn-success" (click)="restaurarProducto(producto.idProducto)">Restaurar</button>
+          <button class="btn btn-warning" routerLink="/productos/editar/{{ producto.idProducto }}">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .container {
+    margin-top: 20px;
+  }
+
+  .button-dashboard {
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    margin: 5px;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .btn-danger, .btn-warning {
+    margin-right: 10px;
+  }
+
+  /* Estilos para la imagen */
+  .producto-imagen {
+    width: 80px;  /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 8px; /* Bordes redondeados */
+    object-fit: cover; /* Asegura que la imagen se recorte bien si es necesario */
+    display: block;
+    margin: 0 auto;
+  }
+</style>

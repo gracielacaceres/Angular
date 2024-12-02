@@ -1,0 +1,63 @@
+<div class="container">
+  <h2 *ngIf="isEditMode">Editar Producto</h2>
+  <h2 *ngIf="!isEditMode">Agregar Producto</h2>
+  <form (ngSubmit)="guardar()">
+    <!-- Campo: Nombre -->
+    <div class="form-group">
+      <label>Nombre:</label>
+      <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" required>
+    </div>
+    <!-- Campo: Descripción -->
+    <div class="form-group">
+      <label>Descripción:</label>
+      <textarea class="form-control" [(ngModel)]="producto.descripcion" name="descripcion" required></textarea>
+    </div>
+    <!-- Campo: Imagen -->
+    <div class="form-group">
+      <label>Imagen:</label>
+      <input type="text" class="form-control" [(ngModel)]="producto.imagen" name="imagen">
+    </div>
+    <!-- Campo: Precio -->
+    <div class="form-group">
+      <label>Precio:</label>
+      <input type="number" class="form-control" [(ngModel)]="producto.precio" name="precio" required>
+    </div>
+    <!-- Campo: Stock -->
+    <div class="form-group">
+      <label>Stock:</label>
+      <input type="number" class="form-control" [(ngModel)]="producto.stock" name="stock" required>
+    </div>
+    <!-- Campo: Unidad de Medida -->
+    <div class="form-group">
+      <label>Unidad de Medida:</label>
+      <select class="form-control" [(ngModel)]="producto.unidadMedida" name="unidadMedida" required>
+        <option value="litros">Litros</option>
+        <option value="gramos">Gramos</option>
+        <option value="unidades">Unidades</option>
+      </select>
+    </div>
+    <!-- Campo: Fecha de Ingreso -->
+    <div class="form-group">
+      <label>Fecha de Ingreso:</label>
+      <input type="date" class="form-control" [(ngModel)]="producto.fechaIngreso" name="fechaIngreso" [value]="hoy" readonly>
+    </div>
+    <!-- Campo: Fecha de Expiración -->
+    <div class="form-group">
+      <label>Fecha de Expiración:</label>
+      <input type="date" class="form-control" [(ngModel)]="producto.fechaExpiracion" name="fechaExpiracion">
+    </div>
+   
+    <!-- Campo: Estado (Solo para editar) -->
+    <div *ngIf="isEditMode" class="form-group">
+      <label>Estado:</label>
+      <select class="form-control" [(ngModel)]="producto.estado" name="estado">
+        <option [value]="1">Activo</option>
+        <option [value]="0">Inactivo</option>
+      </select>
+    </div>
+    <!-- Botón Guardar -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+  </form>
+</div>

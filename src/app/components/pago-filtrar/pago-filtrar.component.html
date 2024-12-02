@@ -1,0 +1,68 @@
+<div claszs="container">
+  <h2>Filtrar Pagos</h2>
+  <div class="button-dashboard">
+    <button class="button-citas" routerLink="/dashboard">Regresar Dashboard</button>
+  </div>
+  <form (ngSubmit)="filtrarPagos()">
+    <div>
+      <label for="idBarbero">Barbero:</label>
+      <select id="idBarbero" [(ngModel)]="idBarbero" name="idBarbero" required>
+        <option *ngFor="let barbero of barberos" [value]="barbero.idUsuario">
+          {{ barbero.nombre }} {{ barbero.apellido }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="fechaInicio">Fecha Inicio:</label>
+      <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" name="fechaInicio" required>
+    </div>
+
+    <div>
+      <label for="fechaFin">Fecha Fin:</label>
+      <input type="date" id="fechaFin" [(ngModel)]="fechaFin" name="fechaFin" required>
+    </div>
+
+    <div>
+      <label for="porcentaje">Porcentaje (0-1):</label>
+      <input type="number" id="porcentaje" [(ngModel)]="porcentaje" name="porcentaje" step="0.01" required>
+    </div>
+
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <h3>Resultados</h3>
+  <div *ngIf="pagos.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Pago</th>
+          <th>Fecha Pago</th>
+          <th>Hora Pago</th>
+          <th>ID Barbero</th>
+          <th>Nombre Barbero</th>
+          <th>Apellido Barbero</th>
+          <th>Fecha Cita</th>
+          <th>Monto Total</th>
+          <th>Monto Barbero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pago of pagos">
+          <td>{{ pago.idPago }}</td>
+          <td>{{ pago.fechaPago }}</td>
+          <td>{{ pago.horaPago }}</td>
+          <td>{{ pago.idBarbero }}</td>
+          <td>{{ pago.nombreBarbero }}</td>
+          <td>{{ pago.apellidoBarbero }}</td>
+          <td>{{ pago.fechaCita }}</td>
+          <td>{{ pago.montoTotalCita }}</td>
+          <td>{{ pago.montoBarbero }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="pagos.length === 0">
+    <p>No se encontraron pagos con los filtros seleccionados.</p>
+  </div>
+</div>

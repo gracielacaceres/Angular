@@ -1,0 +1,101 @@
+<h2 mat-dialog-title>Agregar Usuario</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <!-- Tipo de Documento -->
+    <mat-form-field>
+      <mat-label>Tipo de Documento</mat-label>
+      <mat-select formControlName="tipoDeDocumento">
+        <mat-option value="dni">DNI</mat-option>
+        <mat-option value="cne">CNE</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('tipoDeDocumento')?.hasError('required')">
+        Tipo de documento es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Número de Documento -->
+    <mat-form-field>
+      <mat-label>Número de Documento</mat-label>
+      <input matInput formControlName="numeroDeDocumento">
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('required')">
+        Número de documento es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('invalidDNI')">
+        DNI debe tener exactamente 8 dígitos.
+      </mat-error>
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('invalidCNE')">
+        CNE debe tener entre 9 y 20 dígitos.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Nombre -->
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        Nombre es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('nombre')?.hasError('pattern')">
+        Nombre solo debe contener letras.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Apellido -->
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido">
+      <mat-error *ngIf="form.get('apellido')?.hasError('required')">
+        Apellido es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('apellido')?.hasError('pattern')">
+        Apellido solo debe contener letras.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Celular -->
+    <mat-form-field>
+      <mat-label>Celular</mat-label>
+      <input matInput formControlName="celular">
+      <mat-error *ngIf="form.get('celular')?.hasError('required')">
+        Celular es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('celular')?.hasError('pattern')">
+        Celular debe empezar con 9 y tener 9 dígitos.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Email no es válido.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password con opción para ver -->
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" required>
+      <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        La contraseña es requerida.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Checkbox Activo -->
+    <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+
+    <!-- Botones -->
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancelar()">Cancelar</button>
+      <button mat-button color="primary" type="submit" [disabled]="form.invalid">Agregar</button>
+    </div>
+  </form>
+</mat-dialog-content>

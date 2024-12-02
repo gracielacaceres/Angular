@@ -1,0 +1,79 @@
+@import 'animate.css/animate.min.css';
+
+
+
+.container {
+  text-align: center; /* Centrar el texto dentro del contenedor */
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+  border-radius: 8px; /* Bordes redondeados */
+}
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  button {
+    font-size: 12px;
+  }
+}
+.modal-dialog {
+  max-width: 400px; /* Ancho máximo del modal */
+  margin: 1.75rem auto; /* Centrar el modal */
+}
+
+.modal-body {
+  max-height: 60vh; /* Altura máxima del cuerpo del modal */
+  overflow-y: auto; /* Habilitar scroll vertical */
+}
+h2 {
+  font-size: 2rem; /* Aumentar el tamaño de la fuente */
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
+  border-bottom: 2px solid #007bff; /* Línea debajo del título */
+  padding-bottom: 10px; /* Espaciado inferior */
+  animation: fadeIn 0.5s; /* Efecto de aparición */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Color de fondo de la tabla */
+.table-responsive {
+  background-color: #f8f9fa; /* Color de fondo suave */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+.button-citas {
+  background-color: #007bff; /* Color del botón */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

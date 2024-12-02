@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Gestión de Categorías</h2>
+
+  <div class="form-group">
+    <input [(ngModel)]="newCategoria.nombre" placeholder="Nombre de nueva categoría" class="form-control" />
+    <button (click)="addCategoria()" class="btn btn-primary mt-2">Agregar Categoría</button>
+  </div>
+
+  <hr />
+
+  <div class="button-dashboard">
+    <button class="button-citas" routerLink="/dashboard">Regresar Dashboard</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categoria of categorias">
+        <td>{{ categoria.idCategoria }}</td>
+        <td *ngIf="editingCategoria?.idCategoria !== categoria.idCategoria">{{ categoria.nombre }}</td>
+        <td *ngIf="editingCategoria?.idCategoria === categoria.idCategoria">
+          <input [(ngModel)]="editingCategoriaNombre" class="form-control" />
+        </td>
+        <td>
+          <button *ngIf="editingCategoria?.idCategoria !== categoria.idCategoria" (click)="editCategoria(categoria)" class="btn btn-warning">Editar</button>
+          <button *ngIf="editingCategoria?.idCategoria === categoria.idCategoria" (click)="updateCategoria()" class="btn btn-success">Guardar</button>
+          <button *ngIf="editingCategoria?.idCategoria === categoria.idCategoria" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+          <button (click)="deleteCategoria(categoria.idCategoria!)" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

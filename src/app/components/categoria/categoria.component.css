@@ -1,0 +1,20 @@
+
+.button-dashboard {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .button-citas {
+    background-color: #007bff; /* Color del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-citas:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    background-color: linear-gradient(to right, #2a012b, #070239b4);
+  }

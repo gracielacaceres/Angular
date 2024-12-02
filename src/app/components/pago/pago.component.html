@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Lista de Pagos</h2>
+  <div class="button-dashboard">
+    <button class="button-citas" routerLink="/dashboard">Regresar Dashboard</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Corte Realizado</th>
+        <th>Monto</th>
+        <th>Fecha de Pago</th>
+        <th>Hora de Pago</th>
+        <th>Status</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pago of pagos">
+        <td>{{ pago.idPago }}</td>
+        <td>{{ pago.corteRealizado }}</td>
+        <td>S/{{ pago.monto }}</td>
+        <td>{{ pago.fechaPago }}</td>
+        <td>{{ pago.horaPago }}</td>
+        <td>{{ pago.status === 1 ? 'Activo' : 'Eliminado' }}</td>
+        <td>
+          <button (click)="verDetalle(pago.idPago)" class="btn btn-info">Ver Detalle</button>
+          <button *ngIf="pago.status === 1" (click)="eliminarPago(pago.idPago)" class="btn btn-danger">Eliminar</button>
+          <button *ngIf="pago.status === 0" (click)="reactivarPago(pago.idPago)" class="btn btn-success">Reactivar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal de Detalle -->
+  <div class="modal" tabindex="-1" *ngIf="pagoDetalle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalle del Pago</h5>
+          <button type="button" class="close" (click)="cerrarModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p><strong>ID Pago:</strong> {{ pagoDetalle.pago.idPago }}</p>
+          <p><strong>Corte Realizado:</strong> {{ pagoDetalle.pago.corteRealizado }}</p>
+          <p><strong>Monto:</strong> S/{{ pagoDetalle.pago.monto }}</p>
+          <p><strong>Fecha de Pago:</strong> {{ pagoDetalle.pago.fechaPago }}</p>
+          <p><strong>Hora de Pago:</strong> {{ pagoDetalle.pago.horaPago }}</p>
+          <h4>Información de la Cita</h4>
+          <p><strong>ID Cita:</strong> {{ pagoDetalle.cita.idCita }}</p>
+          <p><strong>Fecha:</strong> {{ pagoDetalle.cita.fecha }}</p>
+          <p><strong>Hora:</strong> {{ pagoDetalle.cita.hora }}</p>
+          <p><strong>Nota:</strong> {{ pagoDetalle.cita.nota }}</p>
+          <h4>Información del Barbero</h4>
+          <p><strong>Nombre:</strong> {{ pagoDetalle.barbero.nombre }}</p>
+          <p><strong>Id:</strong> {{ pagoDetalle.barbero.idUsuario }}</p>
+          <p><strong>Email:</strong> {{ pagoDetalle.barbero.email }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

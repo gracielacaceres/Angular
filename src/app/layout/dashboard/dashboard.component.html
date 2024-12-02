@@ -1,0 +1,91 @@
+<div class="dashboard-container d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar bg-primary p-3 d-flex flex-column">
+    <div class="profile-section text-center mb-5">
+      <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="User Profile">
+      <h4 class="text-white">Macha Barbershop</h4>
+      <p class="text-white-50">barberia cañete</p>
+    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/dashboard">
+          <i class="bi bi-house-door"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/citas-pendientes">
+          <i class="bi bi-clock-history"></i> Citas Pendientes
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/pagos">
+          <i class="bi bi-wrench"></i> PAGOS
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/filtrar_pagos">
+          <i class="bi bi-gear"></i> Filtrar Pagos
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/productos">
+          <i class="bi bi-gear"></i> Productos
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/categorias_productos">
+          <i class="bi bi-gear"></i> Categoria de Productos
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/ventas">
+          <i class="bi bi-gear"></i> Ventas
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-white" routerLink="/ventaslista">
+          <i class="bi bi-gear"></i> Lista Ventas
+        </a>
+      </li>
+      <li *ngIf="isAdmin" class="nav-item mt-auto">
+        <a class="nav-link text-white" routerLink="/usuarios">
+          <i class="bi bi-box-arrow-right"></i> Usuarios
+        </a>
+      </li>
+      <button (click)="logout()" class="btn btn-secondary">Cerrar Sesión</button>
+
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <div class="dashboard-content flex-grow-1 p-4">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card text-center p-3 bg-light shadow-sm">
+          <h5 class="card-title">Payment Due</h5>
+          <h2 class="display-6">$2473</h2>
+          <button class="btn btn-primary mt-3">Pay Now</button>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card text-center p-3 bg-light shadow-sm">
+          <h5 class="card-title">Water</h5>
+          <h2 class="display-6">$627</h2>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card text-center p-3 bg-light shadow-sm">
+          <h5 class="card-title">Electricity</h5>
+          <h2 class="display-6">$992</h2>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card text-center p-3 bg-light shadow-sm">
+          <h5 class="card-title">Gas</h5>
+          <h2 class="display-6">$854</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Aquí puedes añadir más contenido o gráficas -->
+  </div>
+</div>

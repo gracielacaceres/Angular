@@ -1,0 +1,49 @@
+<div class="header-container">
+  <h1>GESTIÓN DE CITAS : ✂️💈</h1>
+</div>
+
+<hr>
+<div class="button-dashboard">
+  <button class="button-citas" routerLink="/dashboard">Regresar Dashboard</button>
+</div>
+
+<div class="citas-container">
+  <div *ngFor="let cita of citasPendientes" class="cita-card">
+    <h3>Cita #{{ cita.idCita }}</h3>
+    <p><strong>Fecha:</strong> {{ cita.fecha | date }}</p>
+    <p><strong>Hora:</strong> {{ cita.hora }}</p>
+    <p><strong>Nota:</strong> {{ cita.nota }}</p>
+    <p><strong>Cliente:</strong> {{ cita.nombreCliente }} {{ cita.apellidoCliente }}</p>
+    <p><strong>Barbero:</strong> {{ cita.nombreBarbero }} {{ cita.apellidoBarbero }}</p>
+    <p><strong>Estado:</strong> {{ cita.estado }}</p>
+    <div class="button-container">
+      <button class="cancel-button" (click)="confirmarCancelacion(cita.idCita)">Cancelar</button>
+      <button class="pay-button" (click)="abrirFormularioPago(cita.idCita)">Pagar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de pago -->
+<div *ngIf="mostrarFormularioPago" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Registrar Pago para Cita #{{ idCitaSeleccionada }}</h3>
+    <form (ngSubmit)="registrarPago()">
+      <label for="corteRealizado">Corte Realizado:</label>
+      <input type="text" id="corteRealizado" [(ngModel)]="nuevoPago.corteRealizado" name="corteRealizado" required />
+
+      <label for="monto">Monto:</label>
+      <input type="number" id="monto" [(ngModel)]="nuevoPago.monto" name="monto" required />
+
+      <label for="fechaPago">Fecha de Pago:</label>
+      <input type="date" id="fechaPago" [(ngModel)]="nuevoPago.fechaPago" name="fechaPago" required />
+
+      <label for="horaPago">Hora de Pago:</label>
+      <input type="time" id="horaPago" [(ngModel)]="nuevoPago.horaPago" name="horaPago" required />
+
+      <div class="modal-buttons">
+        <button type="submit" class="btn btn-primary">Registrar Pago</button>
+        <button type="button" (click)="cancelarFormularioPago()" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

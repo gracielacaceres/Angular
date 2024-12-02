@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>Editar Usuario</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <mat-form-field>
+      <mat-label>Tipo de Documento</mat-label>
+      <mat-select formControlName="tipoDeDocumento">
+        <mat-option *ngFor="let tipo of tiposDeDocumento" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('tipoDeDocumento')?.hasError('required')">
+        Tipo de documento es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Número de Documento</mat-label>
+      <input matInput formControlName="numeroDeDocumento">
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('required')">
+        Número de documento es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('pattern')">
+        Solo se permiten números en el número de documento.
+      </mat-error>
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('minlength')">
+        El número de documento debe tener al menos 9 dígitos.
+      </mat-error>
+      <mat-error *ngIf="form.get('numeroDeDocumento')?.hasError('maxlength')">
+        El número de documento no puede exceder los 20 dígitos.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        Nombre es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('nombre')?.hasError('pattern')">
+        El nombre solo debe contener letras.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido">
+      <mat-error *ngIf="form.get('apellido')?.hasError('required')">
+        Apellido es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('apellido')?.hasError('pattern')">
+        El apellido solo debe contener letras.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Celular</mat-label>
+      <input matInput formControlName="celular">
+      <mat-error *ngIf="form.get('celular')?.hasError('required')">
+        Celular es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('celular')?.hasError('pattern')">
+        El celular debe comenzar con 9 y tener 9 dígitos.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email es requerido.
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Email no es válido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option *ngFor="let rol of roles" [value]="rol">{{ rol }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('rol')?.hasError('required')">
+        Rol es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancelar()">Cancelar</button>
+      <button mat-button color="primary" type="submit">Guardar</button>
+    </div>
+  </form>
+</mat-dialog-content>
